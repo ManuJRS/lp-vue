@@ -10,5 +10,5 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "conventionalCommits.scopes": ["lp-vue"]
+  "conventionalCommits.scopes": ["lp-vue", "store"]
 }
