@@ -3,6 +3,7 @@ import Home from '@/views/HomeView.vue'
 import CartView from '@/views/CartView.vue'
 import CheckoutMockView from '@/views/CheckoutMockView.vue'
 import ThanksView from '@/views/ThanksView.vue'
+import ShopView from '@/views/ShopView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/thanks',
       name: 'thanks',
       component: ThanksView,
+    },
+    {
+      path: '/shop',
+      name: 'shop',
+      component: ShopView,
     },
   ],
 })
