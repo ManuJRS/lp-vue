@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
+import CartButton from '@/components/CartButton.vue'
 import { Button as AcaciaButton } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
@@ -32,10 +33,8 @@ function MobileLinkClass(path: string) {
   <header class="sticky top-0 z-50 bg-white border-b">
     <nav class="mx-auto max-w-6xl px-4">
       <div class="h-14 flex items-center justify-between">
-        <!-- Logo -->
         <RouterLink to="/" class="font-semibold tracking-tight"> Florería </RouterLink>
 
-        <!-- Desktop -->
         <div class="hidden md:flex items-center gap-6">
           <RouterLink to="/" class="text-sm hover:opacity-70" :class="LinkClass('/')">
             Home
@@ -46,36 +45,55 @@ function MobileLinkClass(path: string) {
           </RouterLink>
         </div>
 
-        <!-- Mobile -->
-        <Sheet v-model:open="IsOpen">
-          <SheetTrigger as-child>
-            <AcaciaButton variant="outline" size="sm" class="md:hidden" aria-label="Abrir menú">
-              Menú
-            </AcaciaButton>
-          </SheetTrigger>
+        <div class="flex items-center gap-2">
+          <div class="hidden md:block">
+            <CartButton />
+          </div>
 
-          <SheetContent side="right" class="pt-10">
-            <div class="flex flex-col gap-2">
-              <RouterLink
-                to="/"
-                class="rounded-lg px-3 py-2 text-sm hover:bg-black/5"
-                :class="MobileLinkClass('/')"
-                @click="Close"
-              >
-                Home
-              </RouterLink>
+          <Sheet v-model:open="IsOpen">
+            <SheetTrigger as-child>
+              <AcaciaButton variant="outline" size="sm" class="md:hidden" aria-label="Abrir menú">
+                Menú
+              </AcaciaButton>
+            </SheetTrigger>
 
-              <RouterLink
-                to="/shop"
-                class="rounded-lg px-3 py-2 text-sm hover:bg-black/5"
-                :class="MobileLinkClass('/shop')"
-                @click="Close"
-              >
-                Tienda
-              </RouterLink>
-            </div>
-          </SheetContent>
-        </Sheet>
+            <SheetContent side="right" class="pt-10">
+              <div class="flex items-center justify-between mb-4">
+                <div class="text-sm font-semibold">Menú</div>
+                <CartButton />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <RouterLink
+                  to="/"
+                  class="rounded-lg px-3 py-2 text-sm hover:bg-black/5"
+                  :class="MobileLinkClass('/')"
+                  @click="Close"
+                >
+                  Home
+                </RouterLink>
+
+                <RouterLink
+                  to="/shop"
+                  class="rounded-lg px-3 py-2 text-sm hover:bg-black/5"
+                  :class="MobileLinkClass('/shop')"
+                  @click="Close"
+                >
+                  Tienda
+                </RouterLink>
+
+                <RouterLink
+                  to="/cart"
+                  class="rounded-lg px-3 py-2 text-sm hover:bg-black/5"
+                  :class="MobileLinkClass('/cart')"
+                  @click="Close"
+                >
+                  Carrito
+                </RouterLink>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   </header>

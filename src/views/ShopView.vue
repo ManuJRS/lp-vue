@@ -31,10 +31,6 @@ function onRemove(product: Product) {
 function goToCart() {
   router.push('/cart')
 }
-
-onMounted(() => {
-  cart.hydrate()
-})
 </script>
 
 <template>
