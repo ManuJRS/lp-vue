@@ -1,9 +1,7 @@
-<script lang="ts" setup>
-import MainLayout from './layouts/MainLayout.vue'
+<script setup lang="ts">
+import MainLayout from '@/layouts/MainLayout.vue'
 </script>
 
 <template>
-  <MainLayout>
-    <router-view />
-  </MainLayout>
+  <MainLayout />
 </template>

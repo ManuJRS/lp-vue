@@ -19,6 +19,6 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 649,
     currency: 'MXN',
     variantId: 'v_002',
-    available: true,
+    available: false,
   },
 ]

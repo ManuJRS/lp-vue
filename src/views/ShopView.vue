@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { useCartStore } from '@/stores/cartStore'
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+import { useCartStore } from '@/stores/cartStore'
 import { MOCK_PRODUCTS } from '@/api/mockProducts'
 import ProductsGrid from '@/components/ProductsGrid.vue'
 import type { Product } from '@/types/product.types'
-import { useRouter } from 'vue-router'
+
+import { Button as AcaciaButton } from '@/components/ui/button'
 
 const cart = useCartStore()
 const router = useRouter()
@@ -35,17 +38,21 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <h1 class="text-3xl">Home</h1>
-    <p>Router + Pinia OK ✅</p>
-    <p>Items en carrito: {{ cart.totalItems }}</p>
-    <button
-      v-if="cart.totalItems"
-      class="flex-1 rounded-xl bg-black px-4 py-3 text-sm font-medium text-white hover:bg-zinc-800 my-4 ml-2"
-      @click="goToCart"
-    >
-      Ir al carrito
-    </button>
-  </div>
-  <ProductsGrid :product="MOCK_PRODUCTS" @add="onAdd" @removeOne="onRemove" />
+  <section class="mx-auto max-w-6xl px-4 py-10 space-y-6">
+    <header class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div class="space-y-1">
+        <h1 class="text-3xl font-semibold tracking-tight">Tienda</h1>
+        <p class="text-sm text-muted-foreground">Router + Pinia OK ✅</p>
+        <p class="text-sm text-muted-foreground">
+          Items en carrito: <span class="font-medium text-foreground">{{ cart.totalItems }}</span>
+        </p>
+      </div>
+
+      <AcaciaButton v-if="cart.totalItems" class="w-full sm:w-auto" @click="goToCart">
+        Ir al carrito
+      </AcaciaButton>
+    </header>
+
+    <ProductsGrid :product="MOCK_PRODUCTS" @add="onAdd" @removeOne="onRemove" />
+  </section>
 </template>

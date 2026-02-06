@@ -13,13 +13,15 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <ProductCart
-      v-for="p in product"
-      :key="p.id"
-      :product="p"
-      @add="emit('add', $event)"
-      @removeOne="emit('removeOne', $event)"
-    />
+  <section class="mx-auto max-w-6xl px-4">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ProductCart
+        v-for="p in product"
+        :key="p.id"
+        :product="p"
+        @add="emit('add', $event)"
+        @removeOne="emit('removeOne', $event)"
+      />
+    </div>
   </section>
 </template>
